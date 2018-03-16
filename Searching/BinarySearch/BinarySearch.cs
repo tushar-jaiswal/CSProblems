@@ -29,7 +29,7 @@ public class Searching
 
 			while (left <= right)
 			{
-				int mid = left + (right - left + 1) / 2;
+				int mid = left + (right - left) / 2;
 				if (nums[mid] == target)
 				{
 					return mid;
