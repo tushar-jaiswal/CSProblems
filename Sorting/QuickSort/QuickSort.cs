@@ -24,6 +24,8 @@ namespace ConsoleApp
 		/// This quick sort function sorts an input array of integers in increasing order.
 		/// </summary>
 		/// <param name="arr">the input array of integers</param>
+		/// <param name="low">lower bound of the array to operate on</param>
+		/// <param name="high">higher bound of the array to operate on</param>
 		public static void QuickSort(int[] arr, int low, int high)
 		{
 			if (low < high)
@@ -41,7 +43,7 @@ namespace ConsoleApp
 		/// <param name="arr">the input array of integers</param>
 		/// <param name="low">lower bound of the array to operate on</param>
 		/// <param name="high">higher bound of the array to operate on</param>
-		/// <returns></returns>
+		/// <returns>the index of the pivot element</returns>
 		private static int Partition(int[] arr, int low, int high)
 		{
 			Random rnd = new Random();
