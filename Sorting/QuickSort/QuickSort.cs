@@ -35,6 +35,13 @@ namespace ConsoleApp
 			}
 		}
 
+		/// <summary>
+		/// This function generates a random pivot and arranges all elements lesser than or equal to itself before its position and all elements greater than itself after its position.
+		/// </summary>
+		/// <param name="arr">the input array of integers</param>
+		/// <param name="low">lower bound of the array to operate on</param>
+		/// <param name="high">higher bound of the array to operate on</param>
+		/// <returns></returns>
 		private static int Partition(int[] arr, int low, int high)
 		{
 			Random rnd = new Random();
