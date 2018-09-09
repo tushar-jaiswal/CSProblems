@@ -21,7 +21,7 @@ public class Searching
 		/// </summary>
 		/// <param name="nums">Array in which the search is to be performed</param>
 		/// <param name="target">Target to search</param>
-		/// <returns></returns>
+		/// <returns>The target element's index if found, -1 otherwise</returns>
 		public int BinarySearch(int[] nums, int target)
 		{
 			int left = 0;
