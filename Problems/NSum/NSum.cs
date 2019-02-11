@@ -13,39 +13,39 @@ A solution set is:
   [-2,  0, 0, 2]
 ]*/
 
-class Solution {
-    public List<List<Integer>> NSum(int[] nums, int target, int n) {
-        Arrays.sort(nums);
-        return helper(nums, target, 0, new ArrayList<Integer>(), n);
+public class Solution {
+    public IList<IList<int>> NSum(int[] nums, int target, int n) {
+        Array.Sort(nums);
+        return Helper(nums, target, 0, new List<int>(), n);
     }
 
-    public List<List<Integer>> helper(int[] nums, int target, int start, List<Integer> items, int n)
+    public IList<IList<int>> Helper(int[] nums, int target, int start, List<int> items, int n)
     {
-        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        IList<IList<int>> result = new List<IList<int>>();
         if(n > 2)
         {
-            for(int i = start; i < nums.length - (n - 1); i++)
+            for(int i = start; i < nums.Length - (n - 1); i++)
             {
                 if(i > start && nums[i - 1] == nums[i])
                 { continue; }
-                items.add(nums[i]);
-                result.addAll(helper(nums, target - nums[i], i + 1, items, n - 1));
-                items.remove((Integer)nums[i]);
+                items.Add(nums[i]);
+                ((List<IList<int>>)result).AddRange(Helper(nums, target - nums[i], i + 1, items, n - 1));
+                items.Remove(nums[i]);
             }
         }
         else
         {
             int left = start;
-            int right = nums.length - 1;
+            int right = nums.Length - 1;
             while(left < right)
             {
                 int sum = nums[left] + nums[right];
                 if(sum == target)
                 {
-                    List list = new ArrayList<Integer>(items);
-                    list.add(nums[left]);
-                    list.add(nums[right]);
-                    result.add(list);
+                    List<int> list = new List<int>(items);
+                    list.Add(nums[left]);
+                    list.Add(nums[right]);
+                    result.Add(list);
                     do
                     {
                         left++;
