@@ -4,7 +4,7 @@
 // RateLimiter which implements a sliding time window where requests are allowed up to the configured number.
 
 /*
-Runtime Complexity: Each shouldAllowRequest check is O(log(ClientRequestsInAllowedTimeWindow))
+Runtime Complexity: Each shouldAllowRequest check is O(ClientRequestsInAllowedTimeWindow * log(ClientRequestsInAllowedTimeWindow))
 Space Complexity: Map is O(|Clients| * |Requests per client|)
 */
 
