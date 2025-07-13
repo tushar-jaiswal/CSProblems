@@ -34,7 +34,7 @@ class RateLimitRule:
         self.cooldown_period = cooldown_period        # Optional cooldown in seconds
     
 class RateLimiter:
-    def __init__(self, rate_limits):
+    def __init__(self, rules):
         """
         rules: list of RateLimitRule objects
         """
