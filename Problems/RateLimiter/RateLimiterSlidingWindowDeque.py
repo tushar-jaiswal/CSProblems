@@ -8,7 +8,6 @@
 
 # If we assume, requests come in chronological order, we can use Deque instead of Heap for faster operations
 
-import heapq
 from collections import defaultdict, deque
 
 class Request:
