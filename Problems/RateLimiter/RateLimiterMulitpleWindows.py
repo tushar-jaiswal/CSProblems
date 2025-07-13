@@ -9,8 +9,8 @@
 #     max 5 requests per minute
 #     max 100 requests per hour
 
-# Runtime Complexity: Each shouldAllowRequest check is O(log(ClientRequestsInAllowedTimeWindow))
-# Space Complexity: Map is O(|Clients| * |Requests per client|)
+# Runtime Complexity: Each shouldAllowRequest check is O(|Rate Limits| * MaxAllowedRequestsAmongstRateLimits)
+# Space Complexity: Map is O(|Clients| * |Windows| * |Requests per client|)
 
 # If we assume, requests come in chronological order, we can use Deque instead of Heap for faster operations
 
