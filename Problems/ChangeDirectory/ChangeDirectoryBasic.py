@@ -90,3 +90,5 @@ if __name__ == "__main__":
     assert change_directory.cd("/home/bugs", "~") == "/home/user"
     with pytest.raises(ValueError, match = "Current directory must start with root i.e. '/'"):change_directory.cd("home/bugs", "daffy")
     with pytest.raises(ValueError, match = "Current directory cannot be empty"):change_directory.cd("", "daffy")
+
+    print("All tests passed")
