@@ -33,6 +33,15 @@
 # After each change, reapply the symbolic link map.
 # The final path does not have to be the shortest one.
 
+# Runtime Complexity:
+# * Normalize path is O(len(path))
+# * Cycle detection is O(len(sym_link_map))
+# Overall cd complexity is max of the above two
+# Space Complexity:
+# * Normalize path is O(len(path))
+# * Cycle detection is O(len(sym_link_map))
+# Overall cd complexity is max of the above two
+
 # Clarification Questions
 # Are pwd and new_dir valid or we need to check - validation functions
 # Are pwd and new_dir absolute path or relative path - will need normalization for relative paths
