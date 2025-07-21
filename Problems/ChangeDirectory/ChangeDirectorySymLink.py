@@ -133,3 +133,4 @@ if __name__ == "__main__":
     assert change_directory.cd("/home", ".", {"a":"b", "b":"c"}) == "/home"
     with pytest.raises(ValueError, match = "Symbolic Link map has a cycle"):change_directory.cd("/home", ".", {"a":"b", "b":"c", "c":"b"}) == "/home"
     assert change_directory.cd("/home/bugs", "bunny", {"/home/bugs":"/home", "/home/bugs/bunny":"/home/bugs"}) == "/home/bugs"
+    print("All tests passed")
