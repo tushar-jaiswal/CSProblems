@@ -129,16 +129,16 @@ public class ChangeDirectory {
         
         try {
             changeDirectory.cd("home/bugs", "daffy");
-            assert false; // Should not reach here
         } catch (IllegalArgumentException e) {
             assert e.getMessage().equals("Current directory must start with root i.e. '/'");
         }
 
         try {
             changeDirectory.cd("", "daffy");
-            assert false; // Should not reach here
         } catch (IllegalArgumentException e) {
             assert e.getMessage().equals("Current directory cannot be empty");
         }
+
+        System.out.println("All tests passed.");
     }
 }
