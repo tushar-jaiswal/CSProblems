@@ -20,6 +20,18 @@
 # ● Use caching to improve read performance.
 # ● Invalidate dependent caches when a cell changes.
 
+# Runtime Complexity:
+# Here, n refers to the number of cells in the current Spreadsheet.
+# * init is O(1)
+# * set is O(n)!
+#    * This cell could be in formula for all other cells i.e. n. 
+#    * Those cells themselves could be in formula for other cells except the cells that are in their formula i.e. n!
+# * get is O(1)
+# Space Complexity: 
+# The space required will be O((n)^2) in the worst case. 
+# * O(n) space will be required for the Excel Form itself. 
+# * For each cell in this form, the cells_where_in_formula list can contain O(n) cells.
+
 import pytest
 
 class Cell:
