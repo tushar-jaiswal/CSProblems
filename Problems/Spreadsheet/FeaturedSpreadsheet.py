@@ -47,6 +47,8 @@ class Spreadsheet:
         self.graph = {}
     
     def get(self, key: str) -> int:
+        if key not in self.graph:
+            raise ValueError("Cell", key, "doesn't exist")
         return self.graph[key].val
     
     def set(self, key: str, val: int = None, child1: str = None, child2: str = None):
@@ -99,6 +101,7 @@ if __name__ == "__main__":
     spreadsheet.set("b", 5)
     assert spreadsheet.get("a") == 1
     assert spreadsheet.get("b") == 5
+    with pytest.raises(ValueError):spreadsheet.get("c")
     spreadsheet.set("c", child1 = "a", child2 = "b")
     assert spreadsheet.get("c") == 6
     spreadsheet.set("d", child1 = "a", child2 = "c")
