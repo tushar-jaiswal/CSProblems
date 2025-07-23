@@ -36,7 +36,6 @@ import pytest
 
 class Cell:
     def __init__(self, key: str, val: int = None, child1: str = None, child2: str = None):
-        self.key = key
         self.val = val
         self.child1 = child1
         self.child2 = child2
