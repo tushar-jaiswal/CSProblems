@@ -54,10 +54,7 @@ public class Spreadsheet {
         
         if (cell.child1 != null && cell.child2 != null) {
             // Remove dependency of this cell
-            graph.get(cell.child1).cellsWhereInFormula.remove(key);
-            graph.get(cell.child2).cellsWhereInFormula.remove(key);
-            cell.child1 = null;
-            cell.child2 = null;
+            removeDependencyOfCell(cell);
         }
         
         int oldVal = cell.val;
@@ -81,10 +78,7 @@ public class Spreadsheet {
         
         if (cell.child1 != null && cell.child2 != null) {
             // Remove dependency of this cell
-            graph.get(cell.child1).cellsWhereInFormula.remove(key);
-            graph.get(cell.child2).cellsWhereInFormula.remove(key);
-            cell.child1 = null;
-            cell.child2 = null;
+            removeDependencyOfCell(cell);
         }
         
         // Add key of this cell to cells in formula to mark dependency
@@ -115,6 +109,13 @@ public class Spreadsheet {
             int dependentNewVal = dependentCell.val;
             updateCellsWhereInFormula(dependentCell, dependentOldVal, dependentNewVal, visited);
         }
+    }
+
+    private void removeDependencyOfCell(Cell cell) {
+        graph.get(cell.child1).cellsWhereInFormula.remove(cell.key);
+        graph.get(cell.child2).cellsWhereInFormula.remove(cell.key);
+        cell.child1 = null;
+        cell.child2 = null;
     }
     
     public static void main(String[] args) {
