@@ -65,9 +65,9 @@ class Spreadsheet:
         
         old_val = cell.val
         if val:
-            new_val = val
             if child1 or child2: 
                 raise ValueError("When val is set, child1 or child2 cannot be set")
+            new_val = val
         elif child1 and child2:
             new_val = self.get(child1) + self.get(child2)
             # Add key of this cell to cells in formula to mark dependency
