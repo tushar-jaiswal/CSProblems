@@ -15,8 +15,9 @@
 # Runtime Complexity: O(1) for set; O(log n) for get, where b is the number of entries associated with the specific key
 # Space Complexity: O(k + t), where k is the number of unique keys and t is the total number of set calls
 
-import time
+import concurrent.futures
 import threading
+import time
 from bisect import bisect_right
 from collections import defaultdict
 
@@ -160,6 +161,37 @@ def test_threadsafe_kv():
     t4.join()
 
     print("Multithreaded test passed")
+
+def run_simulation():
+    kv = KVStore()
+
+    def writer_task(key, value):
+        for i in range(5):
+            now = time.time()
+            kv.set(key, value + str(i))
+            print(f"Write {key},{value}{i} at {now:.2f}")
+            time.sleep(0.1)
+
+    def reader_task(key):
+        for _ in range(5):
+            now = time.time()
+            result = kv.get(key, now)
+            print(f"Read {key} at {now:.2f}: {result}")
+            time.sleep(0.1)
+            
+    keys = ["a", "b", "c"]
+    values = ["apple", "banana", "cherry"]
+
+    with concurrent.futures.ThreadPoolExecutor(max_workers=6) as executor:
+        futures = []
+        for i in range(3):
+            futures.append(executor.submit(writer_task, keys[i], values[i]))
+            futures.append(executor.submit(reader_task, keys[i]))
+
+        # Optional: wait for all tasks
+        for f in futures:
+            f.result()
+    print("Tests using ThreadPoolExecutor passed")
 
 if __name__ == "__main__":
     test_real_time_kv()
