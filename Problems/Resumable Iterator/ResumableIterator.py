@@ -1,19 +1,25 @@
 # Author: Tushar Jaiswal
 # Creation Date: 2025-07-28
 
-# Implement a time-based KV store (similar to LeetCode 981).
-# Requirements:
-# ● set(key, value): Save a value with the current timestamp.
-# ● get(key, timestamp): Return the most recent value at or before the given
-# timestamp.
-# Follow-ups:
-# 1. How to handle multithreaded access?
-# → Use ReadWriteLock per key.
-# 2. What to do if the dataset becomes too large (OOM)?
-# → Keep only the most recently accessed data in memory; move older versions to disk
+# Create an iterator that can pause and resume its state, extending to handle multiple files and asynchronous operations.
 
-# Runtime Complexity: O(1) for set; O(log n) for get, where b is the number of entries associated with the specific key
-# Space Complexity: O(k + t), where k is the number of unique keys and t is the total number of set calls
+# Key Concepts:
+#     State Management: Implementing get_state and set_state methods.
+#     Composite Iterators: Managing multiple iterators concurrently.
+#     Asynchronous Programming: Utilizing coroutines for async iteration.
+
+# Requirements:
+# ● Implement an abstract IteratorInterface
+# ● Implement get_state() and set_state(state) for restoring iteration
+# ● No hasNext() is allowed; caller should handle StopIteration
+# ● Write tests that verify resuming works correctly
+
+# Steps:
+# 1. Define the interface
+# 2. Implement a List-based resumable iterator
+# 3. Implement a multiple file resumable iterator
+# 4. Upgrade to async (Coroutine) iterator
+
 
 from abc import ABC, abstractmethod
 import pytest
